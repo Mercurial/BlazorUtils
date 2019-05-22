@@ -1,0 +1,1 @@
+dotnet nuget push bin\Release\publish\*.nupkg -k <key> -s https://api.nuget.org/v3/index.json

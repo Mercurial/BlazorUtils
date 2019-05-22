@@ -1,0 +1,33 @@
+﻿@page "/"
+@using BlazorUtils;
+@inject IJSRuntime JSRuntime
+<h1>Hello, world!</h1>
+<button onclick="@Test">TEST</button>
+Welcome to your new app.
+<testlib.Component1 />
+<MatButton OnClick="@Test">Text</MatButton>
+<MatButton Raised="true">Raised</MatButton>
+<MatButton Unelevated="true">Unelevated</MatButton>
+<MatButton Outlined="true">Outlined</MatButton>
+<MatButton Dense="true">Dense</MatButton>
+
+@functions {
+
+    FileBrowseDialog fbd { get; set; }
+
+    protected override void OnInit()
+    {
+        fbd = new FileBrowseDialog(JSRuntime);
+        fbd.DialogClosed += (s, e) =>
+        {
+            JSRuntime.InvokeAsync<object>("alert", e.Path);
+        };
+
+        base.OnInit();
+    }
+
+    void Test(UIMouseEventArgs e)
+    {
+        fbd.Open();
+    }
+}
