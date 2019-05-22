@@ -9,3 +9,4 @@
 /.vs
 /src/.vs/BlazorUtils/v16
 /src/BlazorUtils/.vs/BlazorUtils
+/src/BlazorUtils/publish.bat
